@@ -1,15 +1,18 @@
 import React from 'react'
 
-export default function f
-    () {
+export default function Card(props) {
+
+    let options=props.options;
+    let price=Object.keys(options);
+
     return (
         <div>
             <div>
                 <div className="card mt-3" style={{ "width": "18rem", "maxHeight": "760px" }}>
-                    <img src="https://source.unsplash.com/random/100x100/?fruit" className="card-img-top" alt="..." />
+                    <img src={props.imgsrc} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Khana.</p>
+                        <h5 className="card-title">{props.foodName}</h5>
+                        {/* <p className="card-text">Khana.</p> */}
                         <div className="container w-100">
                             <select className="m-2 bg-success h-100 rounded">
                                 {Array.from(Array(6), (e, i) => {
@@ -19,8 +22,9 @@ export default function f
                                 })}
                             </select>
                             <select className="m-2 bg-success h-100 rounded">
-                                <option value='half'>Half</option>
-                                <option value='full'>Full</option>
+                                {price.map((data)=>{
+                                    return <option key={data} value={data}>{data}</option>
+                                })}
                             </select>
                             <div className='d-inline fs-6 h-100'>
                                 Total Price.
